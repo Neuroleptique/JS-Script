@@ -1,6 +1,6 @@
 # JS-Script
 
-This is a JavaScript script that let you create a file and write text into that particular file.
+This is a JavaScript script allows you to insert arguments into the placeholders of your template file.
 
 ### Prerequisites
 
@@ -9,9 +9,9 @@ You need to have [NodeJS](https://nodejs.dev/en/) installed on your system.
 ### Usage
 
 ```bash
-node script.js [yourFileName.txt] [aName]
+node script.js [ROLE] [NAME] [COMPANY]
 ```
 
 ### Output
 
-A new file will be created with the file name you specified, with the content `Hello {NAME}`.
+A new 'output.txt' file will be generated with the updated inputs.

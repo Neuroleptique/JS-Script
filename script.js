@@ -1,9 +1,27 @@
-const fs = require('fs')
-const filename = process.argv[2];
-const personName = process.argv[3]
-let greeting = `Hello ${personName}`
+const fs = require('fs');
+const readline = require('readline');
 
-fs.writeFile(filename, greeting, (err) => {
-  if (err) throw err;
-  console.log("Message has been written")
-})
+const readStream = fs.createReadStream('template.txt')
+const writeStream = fs.createWriteStream('output.txt', { encoding: "utf8"} )
+
+const role = process.argv[2];
+const personName = process.argv[3]
+const company = process.argv[4]
+
+const rd = readline.createInterface({
+  input: readStream,
+  output: writeStream
+});
+
+
+rd.on('line', function(line) {
+  let newContent = line.toString()
+                        .replaceAll('{ROLE}', role)
+                        .replaceAll('{COMPANY}', company)
+                        .replaceAll('{NAME}', personName)
+
+  writeStream.write(newContent , (err) => {
+      if (err) throw err;
+      console.log("Message has been written")
+    })
+});
