@@ -1,12 +1,13 @@
 const fs = require('fs');
 const readline = require('readline');
 
-const readStream = fs.createReadStream('template.txt')
+const readStream = fs.createReadStream(filePath)
 const writeStream = fs.createWriteStream('output.txt', { encoding: "utf8"} )
 
 const role = process.argv[2];
 const personName = process.argv[3]
 const company = process.argv[4]
+const filePath = process.argv[5] + 'txt' || 'defaultTemplate.txt'
 
 const rd = readline.createInterface({
   input: readStream,
